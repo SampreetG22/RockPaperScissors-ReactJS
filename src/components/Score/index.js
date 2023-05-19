@@ -6,19 +6,23 @@ class Score extends Component {
   state = {score: 0}
 
   componentDidMount() {
-    console.log('Check Called')
     const {resultText} = this.props
-    this.setScore(resultText)
+    if (resultText === 'YOU WIN') {
+      this.setState(prevstate => ({score: prevstate.score + 1}))
+    }
+    if (resultText === 'YOU LOSE') {
+      this.setState(prevstate => ({score: prevstate.score - 1}))
+    }
   }
 
-  setScore = text => {
+  /* setScore = text => {
     if (text === 'YOU WIN') {
       this.setState(prevstate => ({score: prevstate.score + 1}))
     }
     if (text === 'YOU LOSE') {
       this.setState(prevstate => ({score: prevstate.score - 1}))
     }
-  }
+  } */
 
   render() {
     const {score} = this.state
